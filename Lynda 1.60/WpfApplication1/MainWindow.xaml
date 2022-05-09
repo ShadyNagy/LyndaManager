@@ -1,0 +1,67 @@
+﻿<Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"    
+        Background="Transparent"         
+        Title="Lynda Manager Version 1.50 By Shady Nagy" Height="468.977" Width="1007">
+    <Grid>
+        <Button x:Name="btnGetSubtitles" Content="Subtitles" HorizontalAlignment="Left" Margin="10,342,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-1.515,-0.35" Click="btnGetSubtitles_Click"/>
+        <Button x:Name="btnGetExercises" Content="Exercises Files" HorizontalAlignment="Left" Margin="90,342,0,0" VerticalAlignment="Top" Width="75" Click="btnGetExercises_Click"/>
+        <Button x:Name="btnGetVideos" Content="Videoes" HorizontalAlignment="Left" Margin="170,342,0,0" VerticalAlignment="Top" Width="75" Click="btnGetVideos_Click"/>
+        <Button x:Name="btnStop" Content="Stop" HorizontalAlignment="Left" Margin="432,342,0,0" VerticalAlignment="Top" Width="75" Click="btnStop_Click"/>
+        <Button x:Name="btnAddCourse" Content="Add Course" HorizontalAlignment="Left" Margin="512,342,0,0" VerticalAlignment="Top" Width="75" Click="btnAddCourse_Click"/>
+        <Button x:Name="btnRemoveCourses" Content="Remove Selected Courses" HorizontalAlignment="Left" Margin="592,342,0,0" VerticalAlignment="Top" Width="152" Click="btnRemoveCourse_Click"/>
+        <Button x:Name="btnDownloadAll" Content="Download All" HorizontalAlignment="Left" Margin="749,342,0,0" VerticalAlignment="Top" Width="115" Click="btnDownloadAll_Click"/>
+        <Button x:Name="btnUp" Content="Up" HorizontalAlignment="Left" Margin="869,342,0,0" VerticalAlignment="Top" Width="45" Click="btnUp_Click"/>
+        <Button x:Name="btnDown" Content="Down" HorizontalAlignment="Left" Margin="919,342,0,0" VerticalAlignment="Top" Width="45" Click="btnDown_Click"/>
+        
+        <TextBox x:Name="txtLibraryLink" HorizontalAlignment="Left" Height="23" Margin="142,231,0,0" Text="" VerticalAlignment="Top" Width="190" AcceptsReturn="False" MaxLines="1" TextWrapping="NoWrap"/>
+        <TextBox x:Name="txtUser" HorizontalAlignment="Left" Height="23" Margin="142,259,0,0" Text="" VerticalAlignment="Top" Width="190" AcceptsReturn="False" MaxLines="1" TextWrapping="NoWrap"/>
+        <PasswordBox x:Name="txtPass" HorizontalAlignment="Left" Height="23" PasswordChar="*" VerticalAlignment="Top" Width="190" Margin="142,287,0,0" />
+        <TextBox x:Name="txtCourseLink" HorizontalAlignment="Left" Height="23" Margin="85,315,0,0" Text="" VerticalAlignment="Top" Width="422" AcceptsReturn="False" MaxLines="1" TextWrapping="NoWrap"/>
+
+        <RichTextBox x:Name="Output" HorizontalAlignment="Left" Height="211" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" AcceptsReturn="False" IsReadOnly="True">
+            <FlowDocument>
+                <Paragraph LineHeight="2">
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+        <Label x:Name="lblUser" Content="Library Card Number" HorizontalAlignment="Left" Margin="8,259,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.038,-0.551"/>
+        <Label x:Name="lblPass" Content="Library Card Pin" HorizontalAlignment="Left" Margin="9,286,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblLibraryLink" Content="Lynda Login Link" HorizontalAlignment="Left" Margin="8,231,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCourseLink" Content="Course Link" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.43,0.216"/>
+
+        <CheckBox x:Name="chkSave" Content="Save Account" HorizontalAlignment="Left" Margin="359,236,0,0" VerticalAlignment="Top" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+
+        <Grid HorizontalAlignment="Left" Height="16" Margin="10,367,0,0" VerticalAlignment="Top" Width="954">
+            <ProgressBar Name="pbSmallStatus" Minimum="0" Margin="0,0,0,0" />
+            <TextBlock Name="txtPbSmallStatus" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+
+        <Grid HorizontalAlignment="Left" Height="16" Margin="10,384,0,0" VerticalAlignment="Top" Width="954">
+            <ProgressBar Name="pbStatus" Minimum="0" Margin="0,0,0,0" />
+            <TextBlock Name="txtPbStatus" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+
+        <ListView x:Name="lvCourses" HorizontalAlignment="Left" Height="330" Margin="512,10,0,0" VerticalAlignment="Top" Width="452">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Course Name" Width="250" DisplayMemberBinding="{Binding CourseName}" />
+                    <GridViewColumn Header="Downloaded" Width="90" DisplayMemberBinding="{Binding IsDownloaded}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StatusBar HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="898" Background="Transparent" Margin="0,0,-6,0" >
+            <Label x:Name="lblSpeed" Content="Speed: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-1.921,0.385" Height="26" Width="241"/>
+        </StatusBar>
+        
+
+
+    </Grid>
+</Window>
